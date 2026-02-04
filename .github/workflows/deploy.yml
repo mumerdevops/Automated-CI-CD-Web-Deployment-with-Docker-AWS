@@ -24,7 +24,7 @@ jobs:
           context: .
           push: true
           # Tags ko properly define kiya gaya hai
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-website:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Automated-CI-CD-Web-Deployment-with-Docker-AWS:latest
 
   deploy-to-ec2:
     needs: build-and-push
