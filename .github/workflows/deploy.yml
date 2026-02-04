@@ -24,7 +24,7 @@ jobs:
           context: .
           push: true
           # Tags ko properly define kiya gaya hai
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Automated-CI-CD-Web-Deployment-with-Docker-AWS:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Auto-CI/CD-on-EC2:latest
 
   deploy-to-ec2:
     needs: build-and-push
@@ -36,10 +36,8 @@ jobs:
           host: ${{ secrets.HOST_IP }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            # 1. Docker Install check (if not exists)
-            if ! [ -x "$(command -v docker)" ]; then
-              sudo apt-get update
-              sudo apt-get install -y docker.io
-            fi
+            
+            sudo docker run -d --name web-container -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/my-website:latest
 
+            # 6. Cleanup: Purani bekar images delete karein taake disk full na ho
+            sudo docker image prune -f
