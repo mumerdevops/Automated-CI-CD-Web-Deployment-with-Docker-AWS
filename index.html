@@ -1,162 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mumer DevOps | Portfolio</title>
+  <title>EC2 Deployment</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-    }
-
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      max-width: 900px;
-      width: 90%;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    header {
+      background-color: #0f172a;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
       text-align: center;
-      margin-bottom: 40px;
+      padding-top: 100px;
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+    h1 {
+      color: #38bdf8;
+      font-size: 40px;
     }
 
-    header p {
-      font-size: 1.1rem;
-      color: #cfd8dc;
+    p {
+      font-size: 18px;
+      margin: 15px 0;
     }
 
-    .section {
-      margin-bottom: 35px;
-    }
-
-    .section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 15px;
-      border-left: 4px solid #00e5ff;
-      padding-left: 12px;
-    }
-
-    .section p,
-    .section li {
-      color: #e0f7fa;
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 10px;
-    }
-
-    ul li::before {
-      content: "✔";
-      color: #00e5ff;
-      margin-right: 10px;
-    }
-
-    .buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .buttons a {
-      text-decoration: none;
-      color: #000;
-      background: #00e5ff;
-      padding: 12px 25px;
-      margin: 10px;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: all 0.3s ease;
+    .box {
+      background-color: #1e293b;
       display: inline-block;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
-    .buttons a:hover {
-      background: #18ffff;
-      transform: translateY(-3px);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #b0bec5;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
+    .name {
+      color: #22c55e;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <header>
-      <h1>Mumer DevOps</h1>
-      <p>Linux • Docker • Cloud • Automation</p>
-    </header>
+  <div class="box">
+    <h1>🚀 Website Deployed</h1>
 
-    <div class="section">
-      <h2>About Me</h2>
-      <p>
-        I’m a DevOps enthusiast who loves building, automating, and scaling systems.
-        I work comfortably with Linux, containers, and cloud fundamentals, focusing
-        on reliability and simplicity.
-      </p>
-    </div>
+    <p>
+      This website is successfully deployed on an
+      <span class="name">AWS EC2 instance</span>.
+    </p>
 
-    <div class="section">
-      <h2>Skills</h2>
-      <ul>
-        <li>Linux System Administration</li>
-        <li>Docker & Containerization</li>
-        <li>Git & GitHub</li>
-        <li>Cloud Fundamentals (AWS / Azure)</li>
-        <li>CI/CD Basics</li>
-      </ul>
-    </div>
+    <p>
+      I used an EC2 virtual server to host this website
+      and make it accessible over the internet.
+    </p>
 
-    <div class="section">
-      <h2>Projects</h2>
-      <p>
-        • Simple CRUD applications<br />
-        • Dockerized web apps<br />
-        • GitHub automation workflows
-      </p>
-    </div>
-
-    <div class="buttons">
-      <a href="https://github.com/mumerdevops" target="_blank">GitHub</a>
-      <a href="#" target="_blank">LinkedIn</a>
-    </div>
-
-    <footer>
-      © 2026 Mumer DevOps. Built with ❤️ and Linux.
-    </footer>
+    <p>
+      Deployed by <span class="name">M-Umer-DevOps</span>
+    </p>
   </div>
 
 </body>
