@@ -1,4 +1,4 @@
-name: Docker Build and Deploy
+name: Final Docker CI-CD Deployment
 
 on:
   push:
@@ -23,29 +23,41 @@ jobs:
         with:
           context: .
           push: true
-          # Username aur repo name dhyan se check karein
+          # Tags ko properly define kiya gaya hai
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-website:latest
 
   deploy-to-ec2:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
-      - name: SSH into EC2 and Run Container
+      - name: SSH into EC2 and Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_IP }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Docker install karne ke liye (agar nahi hai)
-            sudo apt-get update && sudo apt-get install -y docker.io
-            
-            # Purana container stop aur remove karein (agar chal raha hai)
+            # 1. Docker Install check (if not exists)
+            if ! [ -x "$(command -v docker)" ]; then
+              sudo apt-get update
+              sudo apt-get install -y docker.io
+            fi
+
+            # 2. Port 80 ko har haal mein khali karein (Conflict Fix)
+            # Pehle purani Nginx service ko stop karein agar wo chal rahi hai
+            sudo systemctl stop nginx || true
+            # Agar koi aur process Port 80 use kar raha hai to usay kill karein
+            sudo fuser -k 80/tcp || true
+
+            # 3. Purane container ko clean karein
             sudo docker stop web-container || true
             sudo docker rm web-container || true
             
-            # Nayi image pull karein
+            # 4. Docker Hub se latest image pull karein
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-website:latest
-            
-            # Naya container chalayein
+
+            # 5. Naya container Run karein
             sudo docker run -d --name web-container -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/my-website:latest
+
+            # 6. Cleanup: Purani bekar images delete karein taake disk full na ho
+            sudo docker image prune -f
