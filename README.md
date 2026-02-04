@@ -1,8 +1,5 @@
 # 🐳 Automated CI/CD Web Deployment with Docker & AWS
 
-Hi! I'm a 15-year-old developer 👨‍💻 learning the ropes of Modern DevOps. This project is a complete **Automated CI/CD Pipeline** that packages a website into a Docker container and deploys it to an AWS EC2 instance.
-
----
 
 ## 🏗 Project Architecture
 
